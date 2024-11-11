@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Lock Example</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #lockButton {
+            padding: 20px;
+            font-size: 18px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #lockButton:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<button id="lockButton">Click to Lock Mouse</button>
+
+<script>
+    const lockButton = document.getElementById('lockButton');
+
+    // Function to request pointer lock
+    function lockMouse() {
+        document.body.requestPointerLock();
+    }
+
+    // Set up event listener for button click
+    lockButton.addEventListener('click', lockMouse);
+
+    // If the pointer is locked, show a message
+    document.addEventListener('pointerlockchange', () => {
+        if (document.pointerLockElement === document.body) {
+            alert('Mouse is locked! Try moving your mouse.');
+        } else {
+            alert('Mouse is unlocked.');
+        }
+    });
+</script>
+
+</body>
+</html>
