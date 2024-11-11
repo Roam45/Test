@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mouse Lock on Click</title>
+    <title>Mouse Lock with Fake Download</title>
     <style>
         body, html {
             margin: 0;
@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: white;
             font-family: Arial, sans-serif;
             overflow: hidden;
@@ -20,13 +20,52 @@
         #message {
             font-size: 24px;
             text-align: center;
+            z-index: 10;
+        }
+        #downloadButton {
+            background-color: #e74c3c;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        #downloadButton:hover {
+            background-color: #c0392b;
+        }
+        #popup {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            z-index: 100;
+        }
+        #fakeDownloadPopup {
+            font-size: 22px;
+            color: white;
         }
     </style>
 </head>
 <body>
 
 <div id="message">
-    Click anywhere to lock your mouse!
+    Click anywhere to lock the mouse.
+</div>
+
+<div id="popup" style="display: none;">
+    <p>Mouse is locked.</p>
+</div>
+
+<div id="fakeDownloadPopup" style="display: none;">
+    <p><strong>Downloading viruses...</strong></p>
+    <button id="downloadButton" disabled>Download Viruses</button>
 </div>
 
 <script>
@@ -35,17 +74,23 @@
         document.body.requestPointerLock();
     }
 
-    // Trigger pointer lock as soon as the user clicks anywhere
+    // Trigger pointer lock when the user clicks anywhere
     document.body.addEventListener('click', lockMouse);
 
-    // Optional: Change message once mouse is locked
+    // Display the popup and fake download once the mouse is locked
     document.addEventListener('pointerlockchange', () => {
-        const messageElement = document.getElementById('message');
         if (document.pointerLockElement === document.body) {
-            messageElement.innerText = 'Mouse is now locked! Move it around.';
-        } else {
-            messageElement.innerText = 'Click anywhere to lock your mouse!';
+            // Hide message and show popup
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('fakeDownloadPopup').style.display = 'block';
         }
+    });
+
+    // The fake "Download" button that does nothing
+    const downloadButton = document.getElementById('downloadButton');
+    downloadButton.addEventListener('click', () => {
+        alert("Downloading.");
     });
 </script>
 
