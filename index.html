@@ -12,16 +12,24 @@
             line-height: 1.6;
             background-color: #f9f9f9;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
+
         header {
             background: linear-gradient(45deg, #6fa3ef, #8c52ff);
             color: white;
-            padding: 2rem 0;
             text-align: center;
+            padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         header h1 {
             margin: 0;
-            font-size: 3rem;
+            font-size: 2.5rem;
             animation: fadeInDown 1s ease-out;
         }
         header p {
@@ -41,85 +49,57 @@
             }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Sections */
+        /* Contact Section */
         section {
             padding: 2rem;
             text-align: center;
         }
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .feature {
-            margin: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 250px;
-            animation: fadeIn 1s ease-in;
-        }
-        .feature img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .feature h3 {
-            margin: 1rem 0 0.5rem;
-        }
 
-        /* Contact Form */
         form {
-        max-width: 400px;
-        margin: 0 auto; /* Centers the form horizontally */
-        background: white;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center; /* Ensures all child elements are centered */
-}
+            max-width: 400px;
+            width: 100%; /* Ensure full responsiveness */
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-form button:hover {
-    background: #8c52ff;
-}
-
-        form input, form textarea, form button {
-            width: 100%;
-            margin-bottom: 1rem;
+        form input,
+        form textarea,
+        form button {
+            width: calc(100% - 20px); /* Prevent any overflow */
+            margin: 0.5rem 0;
             padding: 0.8rem;
             border: 1px solid #ddd;
-            border-radius: 2px;
+            border-radius: 5px;
+            box-sizing: border-box; /* Includes padding in width calculation */
         }
+
         form button {
-    background: #6fa3ef;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 0.8rem 1.5rem; /* Adds extra padding for a better look */
-    border-radius: 5px;
-    display: inline-block;
-    text-align: center;
-}
-        
+            background: #6fa3ef;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.8rem 1.5rem;
+            display: inline-block;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
         form button:hover {
             background: #8c52ff;
         }
 
         footer {
+            margin-top: 2rem;
             text-align: center;
             padding: 1rem;
             background: #6fa3ef;
             color: white;
-            margin-top: 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -128,27 +108,6 @@ form button:hover {
         <h1>Seas of Stitches</h1>
         <p>Crafting Your Unique Story in Every Thread</p>
     </header>
-
-    <section>
-        <h2>Our Features</h2>
-        <div class="features">
-            <div class="feature">
-                <img src="https://via.placeholder.com/250" alt="Custom Embroidery">
-                <h3>Custom Embroidery</h3>
-                <p>Personalized designs stitched with love.</p>
-            </div>
-            <div class="feature">
-                <img src="https://via.placeholder.com/250" alt="Eco-Friendly">
-                <h3>Cutom Orders</h3>
-                <p>We care about you and do custom orders.</p>
-            </div>
-            <div class="feature">
-                <img src="https://via.placeholder.com/250" alt="Handcrafted Quality">
-                <h3>Handcrafted Quality</h3>
-                <p>Every piece is carefully made with attention to detail.</p>
-            </div>
-        </div>
-    </section>
 
     <section>
         <h2>Contact Us</h2>
